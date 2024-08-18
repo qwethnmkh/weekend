@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Masterclass Exam</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            width: 80%;
+            max-width: 600px;
+        }
+        .container.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        .arrow {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            cursor: pointer;
+            font-size: 30px;
+            background-color: #1abc9c;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+        .arrow:hover {
+            background-color: #16a085;
+        }
+        .correct {
+            background-color: #27ae60;
+            color: white;
+        }
+        .wrong {
+            background-color: #c0392b;
+            color: white;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 0;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        input[type="text"] {
+            width: 100px;
+            height: 35px;
+            border-radius: 5px;
+            border: 2px solid #2980b9;
+            padding: 5px;
+            text-align: center;
+            margin-top: 15px;
+            background-color: #fff;
+            color: #000;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        h1, h2, p {
+            margin: 0 0 20px;
+        }
+        
+        pi {
+            color: #00ff2d;
+            font-family: Times New Roman;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="container1" class="container active">
+        <h1>Coding Masterclass</h1>
+      <pi>Welcome Sai Zay Lin Myat</pi>
+        <h2>Weekend Exam</h2>
+        <p>Try not to cheat</p>
+        <button onclick="nextContainer(2)">Next</button>
+    </div>
+    
+
+    <div id="container2" class="container">
+        <h2>Rules</h2>
+        <ul style="text-align: left;">
+            <li>Time allowed only 3 minutes.</li>
+            <li>After 3 minutes, the page will automatically crash.</li>
+            <li>You will pass if you gain over 70 marks.</li>
+            <li>You must show the screenshot of total marks within 5 minutes. (So, hurry up.)</li>
+        </ul>
+        <button onclick="startExam()">Start</button>
+    </div>
+
+    <!-- Example question containers -->
+    <div id="container3" class="container">
+        <h2>What is the full form of HTML?</h2>
+        <pi>Now, choose. </pi>
+        <button onclick="selectAnswer(this, 'correct', 1)">A. Hypertext Markup Language</button>
+        <button onclick="selectAnswer(this, 'wrong', 1)">B. Hypertext Makeup Language</button>
+        <button onclick="selectAnswer(this, 'wrong', 1)">C. Hyper Test Markup Language</button>
+        <button onclick="selectAnswer(this, 'wrong', 1)">D. Hypertext Markup League</button>
+    </div>
+
+    <div id="container4" class="container">
+        <h2>What is the full form of CSS?</h2>
+        <button onclick="selectAnswer(this, 'wrong', 2)">A. Coding Style Sheets</button>
+        <button onclick="selectAnswer(this, 'wrong', 2)">B. Computer Style Sheets</button>
+        <button onclick="selectAnswer(this, 'wrong', 2)">C. Creative Style Sheets</button>
+        <button onclick="selectAnswer(this, 'wrong', 2)">D. Colorful Style Sheets</button>
+        <button onclick="selectAnswer(this, 'correct', 2)">E. Cascading Style Sheets</button>
+    </div>
+
+    <div id="container5" class="container">
+        <h2>Which tag do we use to create main headers?</h2>
+        <pi>You can confuse. Choose carefully. 🎅🎅</pi>
+        <button onclick="selectAnswer(this, 'wrong', 3)">&lt;h1&gt; ....... &lt;/h2&gt;</button>
+        <button onclick="selectAnswer(this, 'wrong', 3)">&lt;h2&gt; ....... &lt;/h3&gt;</button>
+        <button onclick="selectAnswer(this, 'correct', 3)">&lt;h1&gt; ....... &lt;/h1&gt;</button>
+        <button onclick="selectAnswer(this, 'wrong', 3)">&lt;h2&gt; ....... &lt;/h2&gt;</button>
+        <button onclick="selectAnswer(this, 'wrong', 3)">&lt;h1&gt; ....... &lt;/y1&gt;</button>
+    </div>
+
+    <div id="container6" class="container">
+        <h2>In HTML, &lt;p&gt; tag is used to:</h2>
+        <button onclick="selectAnswer(this, 'wrong', 4)">A. Create paracetamol</button>
+        <button onclick="selectAnswer(this, 'wrong', 4)">B. Create paracap</button>
+        <button onclick="selectAnswer(this, 'correct', 4)">C. Create paragraph</button>
+        <button onclick="selectAnswer(this, 'wrong', 4)">D. Create protocol</button>
+        <button onclick="selectAnswer(this, 'wrong', 4)">E. Create promotion</button>
+        <button onclick="selectAnswer(this, 'wrong', 4)">F. Create Paris</button>
+    </div>
+
+    <div id="container7" class="container">
+        <h2>What is the full form of "px"?</h2>
+        <button onclick="selectAnswer(this, 'correct', 5)">A. Pixels</button>
+        <button onclick="selectAnswer(this, 'wrong', 5)">B. Proxima</button>
+        <button onclick="selectAnswer(this, 'wrong', 5)">C. Pseudo</button>
+        <button onclick="selectAnswer(this, 'wrong', 5)">D. Proximal</button>
+        <button onclick="selectAnswer(this, 'wrong', 5)">E. Picas</button>
+    </div>
+
+    <div id="container8" class="container">
+        <h2>Choose the wrong one❗</h2>
+        <pi>Read the question again!</pi>
+        <button onclick="selectAnswer(this, 'wrong', 6)">A. background: linear-gradient(to right, black, white);</button>
+        <button onclick="selectAnswer(this, 'wrong', 6)">B. background: linear-gradient(to top, gold, silver);</button>
+        <button onclick="selectAnswer(this, 'correct', 6)">C. background: linear-gradient(to top, gold, dark-grey);</button>
+        <button onclick="selectAnswer(this, 'wrong', 6)">D. background: linear-gradient(to right, gold, silver)</button>
+        <button onclick="selectAnswer(this, 'correct', 6)">E. background: linear-gradient(to top, pink, silver);</button>
+    </div>
+
+    <div id="container9" class="container">
+        <h2>Choose the correct one.</h2>
+      <pi>Hurru up! About to time over 🔥 🔥 🔥 </pi>
+        <button onclick="selectAnswer(this, 'wrong', 7)">A. background: linear-gradient(to top, gold, silver)</button>
+        <button onclick="selectAnswer(this, 'wrong', 7)">B. background: linear-gradient(to top, gold, silver):</button>
+        <button onclick="selectAnswer(this, 'wrong', 7)">C. background: linear gradient(to top, gold, silver);</button>
+        <button onclick="selectAnswer(this, 'wrong', 7)">D. backgroundlinear-gradient(to top, gold silver);</button>
+        <button onclick="selectAnswer(this, 'correct', 7)">E. background: linear-gradient(to top, gold, silver);</button>
+    </div>
+
+        <div id="container10" class="container">
+        <h2>What can we do with CSS?</h2>
+        <button onclick="selectAnswer(this, 'wrong', 8)">A. Its meaning is "Central Communication System". We can communicate with others who live in foreign countries.</button>
+        <button onclick="selectAnswer(this, 'wrong', 8)">B. It is called "Cyber Contract Security". And we can secure our websites from hackers.</button>
+        <button onclick="selectAnswer(this, 'wrong', 8)">C. The question is wrong. The correct question is International Space Station "ISS". Not "CSS"</button>
+        <button onclick="selectAnswer(this, 'wrong', 8)">D. We can secure the earth 🌎 from other astroids by using the Cosmos Security Servise(CSS)</button>
+        <button onclick="selectAnswer(this, 'correct', 8)">E. CSS means "Cascading Style Sheets". We use it when we design the webpage. Such as (changing colors, set width and height and much more).</button>
+    </div>
+
+    <div id="container11" class="container">
+        <h2>Which is the correct HTML tag for the largest heading?</h2>
+        <button onclick="selectAnswer(this, 'correct', 9)">A. &lt;h1&gt;</button>
+        <button onclick="selectAnswer(this, 'wrong', 9)">B. &lt;heading&gt;</button>
+        <button onclick="selectAnswer(this, 'wrong', 9)">C. &lt;h6&gt;</button>
+        <button onclick="selectAnswer(this, 'wrong', 9)">D. &lt;head&gt;</button>
+    </div>
+
+    <div id="container12" class="container">
+        <h2>If we want to insert images, we use..</h2>
+        <button onclick="selectAnswer(this, 'correct', 10)">A. &lt;img...</button>
+        <button onclick="selectAnswer(this, 'wrong', 10)">B. &lt;div&gt;</button>
+        <button onclick="selectAnswer(this, 'wrong', 10)">C. &lt;span&gt;</button>
+        <button onclick="selectAnswer(this, 'wrong', 10)">D. &lt;a&gt;</button>
+        <button onclick="selectAnswer(this, 'wrong', 10)">E. &lt;body&gt;</button>
+    </div>
+
+    
+
+    <div id="container13" class="container">
+        <h1 style="font-size: 35px; color: green;">Screenshot fast</h1>
+        <h2>Results</h2>
+       
+        <p>Enter the secret code to reset:</p>
+        <input type="text" id="secretCode" placeholder="Enter code">
+        <button onclick="checkSecretCode()">Enter</button>
+        <h2>Question Marks</h2>
+        <ul style="text-align: left;">
+            <li>1 - <span id="q1marks">0</span></li>
+            <li>2 - <span id="q2marks">0</span></li>
+            <li>3 - <span id="q3marks">0</span></li>
+            <li>4 - <span id="q4marks">0</span></li>
+            <li>5 - <span id="q5marks">0</span></li>
+            <li>6 - <span id="q6marks">0</span></li>
+            <li>7 - <span id="q7marks">0</span></li>
+            <li>8 - <span id="q8marks">0</span></li>
+            <li>9 - <span id="q9marks">0</span></li>
+            <li>10 - <span id="q10marks">0</span></li>
+           
+        </ul>
+    </div>
+
+    <button class="arrow" onmousedown="holdArrow()" onmouseup="releaseArrow()">→</button>
+
+    <script>
+        let currentContainer = 1;
+        let examStarted = false;
+        let countdown;
+        let holdTimeout;
+
+        function nextContainer(containerId) {
+            if (examStarted && containerId === 2) return;
+
+            document.querySelector('.container.active').classList.remove('active');
+            document.getElementById('container' + containerId).classList.add('active');
+            currentContainer = containerId;
+            localStorage.setItem('currentContainer', currentContainer);
+        }
+
+        function startExam() {
+            nextContainer(3);
+            examStarted = true;
+            countdown = setTimeout(() => {
+                document.body.innerHTML = '<h1>Time Over!</h1>';
+                localStorage.clear();
+            }, 3 * 60 * 1000);
+        }
+
+        function selectAnswer(button, correctness, questionNumber) {
+            if (button.parentNode.querySelector('.selected')) return;
+
+            button.classList.add('selected', correctness);
+            const marks = correctness === 'correct' ? 10 : 0;
+            localStorage.setItem('q' + questionNumber + 'marks', marks);
+            document.getElementById('q' + questionNumber + 'marks').textContent = marks;
+
+            setTimeout(() => {
+                nextContainer(currentContainer + 1);
+                if (currentContainer === 13) showResult();
+            }, 1000);
+        }
+
+        function showResult() {
+            let totalMarks = 0;
+            for (let i = 1; i <= 11; i++) {
+                totalMarks += parseInt(localStorage.getItem('q' + i + 'marks') || 0);
+            }
+                        const resultImage = document.getElementById('resultImage');
+
+            if (totalMarks >= 70) {
+                resultImage.src = 'pass_image_url'; // Replace with the actual pass image URL
+            } else {
+                resultImage.src = 'fail_image_url'; // Replace with the actual fail image URL
+            }
+
+            localStorage.setItem('totalMarks', totalMarks);
+        }
+
+        function checkSecretCode() {
+            const secretCode = document.getElementById('secretCode').value;
+            if (secretCode === '12345') {
+                localStorage.clear();
+                nextContainer(1);
+            }
+        }
+
+        function holdArrow() {
+            holdTimeout = setTimeout(() => {
+                nextContainer(currentContainer + 1);
+            }, 500);
+        }
+
+        function releaseArrow() {
+            clearTimeout(holdTimeout);
+        }
+
+        window.onload = function() {
+            currentContainer = parseInt(localStorage.getItem('currentContainer')) || 1;
+            if (currentContainer > 1) {
+                nextContainer(currentContainer);
+            }
+
+            for (let i = 1; i <= 11; i++) {
+                const storedMarks = localStorage.getItem('q' + i + 'marks');
+                if (storedMarks) {
+                    document.getElementById('q' + i + 'marks').textContent = storedMarks;
+                }
+            }
+
+            const storedTotalMarks = localStorage.getItem('totalMarks');
+            if (storedTotalMarks) {
+                showResult();
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+  
